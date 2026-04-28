@@ -19,7 +19,9 @@ require('common');
 ashita.events.register('text_in', 'text_in_cb', function (e)
     -- Check if the message contains the invisibility block message
     if string.find(e.message, 'You cannot use that command while invisible.') then
-        -- Issue the command to remove invisible buff (buff ID 69)
-        AshitaCore:GetChatManager():QueueCommand(1, '/debuff 69');
+        -- Issue the command to remove invisible buff
+        AshitaCore:GetChatManager():QueueCommand(1, '/debuff 69'); -- Invisible
+        AshitaCore:GetChatManager():QueueCommand(1, '/debuff 76'); -- Hide
+        AshitaCore:GetChatManager():QueueCommand(1, '/debuff 77'); -- Camouflage
     end
 end);
