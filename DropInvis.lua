@@ -15,13 +15,20 @@ addon.link      = 'https://github.com/seekey13/DropInvis';
 
 require('common');
 
+local INVIS_BUFFS = {
+    {id = 69, name = 'Invisible'},
+    {id = 76, name = 'Hide'},
+    {id = 77, name = 'Camouflage'}
+};
+
 -- Event: Incoming text (chat messages)
 ashita.events.register('text_in', 'text_in_cb', function (e)
     -- Check if the message contains the invisibility block message
     if string.find(e.message, 'You cannot use that command while invisible.') then
         -- Issue the command to remove invisible buff
-        AshitaCore:GetChatManager():QueueCommand(1, '/debuff 69'); -- Invisible
-        AshitaCore:GetChatManager():QueueCommand(1, '/debuff 76'); -- Hide
-        AshitaCore:GetChatManager():QueueCommand(1, '/debuff 77'); -- Camouflage
+        local chatMgr = AshitaCore:GetChatManager();
+        for _, buff in ipairs(INVIS_BUFFS) do
+            chatMgr:QueueCommand(1, string.format('/debuff %d', buff.id));
+        end
     end
 end);
