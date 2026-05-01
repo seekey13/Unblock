@@ -23,12 +23,16 @@ local INVIS_BUFFS = {
 
 -- Event: Incoming text (chat messages)
 ashita.events.register('text_in', 'text_in_cb', function (e)
-    -- Check if the message contains the invisibility block message
-    if string.find(e.message, 'You cannot use that command while invisible.') then
-        -- Issue the command to remove invisible buff
-        local chatMgr = AshitaCore:GetChatManager();
-        for _, buff in ipairs(INVIS_BUFFS) do
-            chatMgr:QueueCommand(1, string.format('/debuff %d', buff.id));
+    -- Only check messages in channel mode 121 (system text)
+    local redcol = e.mode % 256;
+    if redcol == 121 then
+        -- Check if the message contains the invisibility block message
+        if string.find(e.message, 'You cannot use that command while invisible.') then
+            -- Issue the command to remove invisible buff
+            local chatMgr = AshitaCore:GetChatManager();
+            for _, buff in ipairs(INVIS_BUFFS) do
+                chatMgr:QueueCommand(1, string.format('/debuff %d', buff.id));
+            end
         end
     end
 end);
