@@ -1,7 +1,10 @@
 --[[
 Unblock
-Automatically removes invisible status when attempting to use commands while invisible,
-and dismounts when attempting to use commands while mounted.
+When a command is blocked by "You cannot use that command while invisible.",
+removes Invisible, Hide and Camouflage (requires the debuff addon by atom0s).
+When a command is blocked by "You cannot use that command while mounted.",
+dismounts (only if the Mounted status is actually present).
+The blocked command is not retried; issue it again.
 Copyright (c) 2025 Seekey
 https://github.com/seekey13/Unblock
 
