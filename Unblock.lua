@@ -1,18 +1,21 @@
 --[[
-DropInvis
-Automatically removes invisible status when attempting to use commands while invisible,
-and dismounts when attempting to use commands while mounted.
+Unblock
+When a command is blocked by "You cannot use that command while invisible.",
+removes Invisible, Hide and Camouflage (requires the debuff addon by atom0s).
+When a command is blocked by "You cannot use that command while mounted.",
+dismounts (only if the Mounted status is actually present).
+The blocked command is not retried; issue it again.
 Copyright (c) 2025 Seekey
-https://github.com/seekey13/DropInvis
+https://github.com/seekey13/Unblock
 
 This addon is designed for Ashita v4.
 ]]
 
-addon.name      = 'DropInvis';
+addon.name      = 'Unblock';
 addon.author    = 'Seekey';
 addon.version   = '0.2';
 addon.desc      = 'Automatically removes invisible status or dismounts when blocked by them';
-addon.link      = 'https://github.com/seekey13/DropInvis';
+addon.link      = 'https://github.com/seekey13/Unblock';
 
 require('common');
 
